@@ -1,0 +1,42 @@
+<div fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Students</mat-card-title>
+            <mat-card-subtitle>{{nb_Students}}</mat-card-subtitle>
+        </mat-card-header>
+    </mat-card>
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Teachers</mat-card-title>
+            <mat-card-subtitle>{{nb_Teachers}}</mat-card-subtitle>
+        </mat-card-header>
+    </mat-card>
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Tools</mat-card-title>
+            <mat-card-subtitle>{{nb_Tools}}</mat-card-subtitle>
+        </mat-card-header>
+    </mat-card>
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Events</mat-card-title>
+            <mat-card-subtitle>{{nb_Events}}</mat-card-subtitle>
+        </mat-card-header>
+    </mat-card>
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Articles</mat-card-title>
+            <mat-card-subtitle>{{nb_Articles}}</mat-card-subtitle>
+        </mat-card-header>
+    </mat-card>
+</div>
+<div fxLayout="row" fxLayoutAlign="space-around center" >
+<div class="chart-wrapper">
+    <canvas baseChart [type]="'line'" [datasets]="chartData" [labels]="chartLabels" [options]="chartOptions">
+    </canvas>
+</div>
+<div class="chart-wrapper">
+    <canvas baseChart [type]="'pie'" [datasets]="chartDataPie" [labels]="chartLabelsPie" [options]="chartOptionsPie">
+    </canvas>
+</div>
+</div>

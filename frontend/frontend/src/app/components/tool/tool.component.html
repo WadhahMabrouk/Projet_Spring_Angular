@@ -1,0 +1,43 @@
+<div fxLayout="row" fxLayoutAlign="end center" >
+    <button mat-raised-button (click)="OpenDialog()">Create new</button>
+
+</div>
+<div fxLayout="row" fxLayoutAlign="end center" >
+    <button mat-raised-button (click)="OpenDialog2()">Affect to</button>
+</div>
+<mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+  </mat-form-field>
+<table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="Source">
+        <th mat-header-cell *matHeaderCellDef> Source </th>
+        <td mat-cell *matCellDef="let element"> {{element.source}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="Date">
+        <th mat-header-cell *matHeaderCellDef> Date  </th>
+        <td mat-cell *matCellDef="let element"> {{element.date  | date:"MMM dd, yyyy 'at' hh:mm a" }}</td>
+        <!-- <td mat-cell *matCellDef="let element"> {{element.Date  | date:"MMM dd, yyyy 'at' hh:mm a" }} </td> -->
+    </ng-container>
+ 
+
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+            <button (click)="OpenDialog(element.id)"><mat-icon >edit</mat-icon></button>
+            <button (click)="deleteOutil(element.id)"><mat-icon>delete</mat-icon></button>
+        </td>
+    </ng-container> 
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

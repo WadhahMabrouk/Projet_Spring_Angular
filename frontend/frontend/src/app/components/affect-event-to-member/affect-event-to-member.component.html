@@ -1,0 +1,28 @@
+<p>affect-article-to-member works!</p>
+<mat-dialog-content [formGroup]="form">
+  
+    <mat-form-field>
+        <mat-label>Member</mat-label>
+        <mat-select formControlName="createur">
+            <mat-option *ngFor="let createur of dataMembers" [value]="createur">
+                {{ createur.nom }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+  <mat-form-field>
+      <mat-label>Event</mat-label>
+      <mat-select formControlName="event">
+          <mat-option *ngFor="let event of dataEvents" [value]="event">
+              {{ event.titre }}
+          </mat-option>
+      </mat-select>
+  </mat-form-field>
+
+</mat-dialog-content>
+
+
+<mat-dialog-actions>
+    <button class="mat-raised-button"(click)="close()">Close</button>
+    <button class="mat-raised-button mat-primary"(click)="save()">Save</button>
+</mat-dialog-actions>

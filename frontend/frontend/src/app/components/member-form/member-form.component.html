@@ -1,0 +1,77 @@
+<h1>add new {{type}}</h1>
+<form [formGroup]="form" (ngSubmit)="OnSubmit()">
+    <mat-form-field>
+        <mat-label>Cin</mat-label>
+        <input matInput maxlength="8" formControlName="cin">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Nom</mat-label>
+        <input matInput formControlName="nom">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>prenom</mat-label>
+        <input matInput formControlName="prenom">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>date Naissance</mat-label>
+        <input matInput formControlName="dateNaissance" [matDatepicker]="picker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Cv</mat-label>
+        <input matInput formControlName="cv">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+        <mat-hint>Errors appear instantly!</mat-hint>
+      
+        <ng-container *ngIf="form.hasError('email') && !form.hasError('required')">
+          <mat-error>Please enter a valid email address</mat-error>
+        </ng-container>
+      
+        <ng-container *ngIf="form.hasError('required')">
+          <mat-error>Email is <strong>required</strong></mat-error>
+        </ng-container>
+      </mat-form-field>
+    
+      
+
+
+    <mat-form-field>
+        <mat-label>password</mat-label>
+        <input matInput formControlName="password">
+    </mat-form-field>
+    <!-- Champs d'enseignant -->
+    <mat-form-field *ngIf="this.type=='teacher'">
+        <mat-label>etablissement</mat-label>
+        <input matInput formControlName="etablissement">
+    </mat-form-field>
+    <mat-form-field *ngIf="this.type=='teacher'">
+        <mat-label>grade</mat-label>
+        <input matInput formControlName="grade">
+    </mat-form-field>
+
+
+    <!-- Champs d'etudiant -->
+    <mat-form-field *ngIf="this.type=='student'">
+        <mat-label>sujet</mat-label>
+        <input matInput formControlName="sujet">
+    </mat-form-field>
+    <mat-form-field *ngIf="this.type=='student'">
+        <mat-label>date Inscription</mat-label>
+        <input matInput formControlName="dateInscription" [matDatepicker]="picker2">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field *ngIf="this.type=='student'">
+        <mat-label>diplome</mat-label>
+        <input matInput formControlName="diplome">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary">Submit</button>
+</form>
